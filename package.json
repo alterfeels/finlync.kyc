@@ -1,0 +1,12 @@
+{
+  "name": "finlync-kyc-service",
+  "version": "1.0.0",
+  "description": "FinLync KYC Verification Service",
+  "main": "kyc-service.cjs",
+  "scripts": {
+    "start": "node kyc-service.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
