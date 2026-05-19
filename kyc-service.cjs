@@ -26,12 +26,27 @@ function logRequest(entry) {
 }
 
 // ── CORS HEADERS ──────────────────────────────────────────
-function setCORS(res) {
+/*function setCORS(res) {
   res.setHeader("Access-Control-Allow-Origin",  "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 }
+*/
+function setCORS(res) {
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:4173",
+    process.env.FRONTEND_URL,
+  ].filter(Boolean);
 
+  const origin = res.req?.headers?.origin || "";
+  const allowed = allowedOrigins.includes(origin) || origin.endsWith(".netlify.app");
+  
+  res.setHeader("Access-Control-Allow-Origin", allowed ? origin : allowedOrigins[0]);
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Vary", "Origin");
+}
 // ── HELPERS ───────────────────────────────────────────────
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
