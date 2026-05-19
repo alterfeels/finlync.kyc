@@ -302,7 +302,8 @@ function dashboardHTML() {
         ["Base latency","600–900ms"],
         ["Timeout threshold","3000ms"],
         ["Max retries","3"],
-        ["CORS origin","http://localhost:5173 (FinLync Frontend)"],
+     //   ["CORS origin","http://localhost:5173 (FinLync Frontend)"],
+        ["CORS origin","* (all origins permitted)"],
       ].map(([k,v]) => `<tr><td style="color:#64748b;width:220px">${k}</td><td style="font-family:monospace;font-size:12px">${v}</td></tr>`).join("")}
     </table>
   </div>
